@@ -1,0 +1,31 @@
+version: '3'
+services:
+  api:
+    build: .
+    container_name: apicrud
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+      DB_NAME: todosdb
+    networks:
+      - app-network
+
+  db:
+    image: mysql:5.7
+    container_name: mysqldb
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: todosdb
+    ports:
+      - '3306:3306'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
