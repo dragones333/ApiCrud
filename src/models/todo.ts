@@ -1,31 +1,34 @@
 import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/config';
 
-export class Todo extends Model {
-  public id!: number;
-  public title!: string;
-  public description!: string;
-  public completed!: boolean;
+class Todo extends Model {
+    public id!: number;
+    public title!: string;
+    public description!: string;
+    public completed!: boolean;
 }
 
 Todo.init({
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  description: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  completed: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    completed: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
 }, {
-  sequelize,
-  modelName: 'Todo'
+    sequelize,
+    tableName: 'todos',
 });
+
+export default Todo;

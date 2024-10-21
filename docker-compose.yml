@@ -1,7 +1,9 @@
 version: '3'
 services:
   api:
-    build: .
+    build:
+      context: .                 
+      dockerfile: Dockerfile     
     container_name: apicrud
     ports:
       - '3000:3000'
@@ -23,9 +25,14 @@ services:
       MYSQL_DATABASE: todosdb
     ports:
       - '3306:3306'
+    volumes:                       
+      - mysql_data:/var/lib/mysql
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
+
+volumes:                          
+  mysql_data:
