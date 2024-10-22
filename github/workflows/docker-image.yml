@@ -24,8 +24,8 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build -t your_dockerhub_username/apicrud-api:latest .  
+          docker build -t orlando333/apicrud-api:latest .  
 
       - name: Push the Docker image
         run: |
-          docker push your_dockerhub_username/apicrud-api:latest 
+          docker push orlando333/apicrud-api:latest 
